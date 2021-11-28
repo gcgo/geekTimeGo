@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="efc4483f-a5a4-4315-a258-9b79904d5524" name="mydev" url="http://localhost">
+        <fileTransfer mountedRoot="/Volumes/gcgo/gopath/src/learn.go" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
