@@ -1,50 +1,4 @@
-package main
-
-import "fmt"
-
-func main() {
-	var name string
-	var sex, weight, height, age float64
-	var next int
-	ziliao := make(map[string]string)
-	var tizhiToal []float64
-
-	for {
-		fmt.Println("姓名：")
-		fmt.Scanln(&name)
-
-		fmt.Println("性别：(男：1，女：0)")
-		fmt.Scanln(&sex)
-
-		fmt.Println("体重(公斤)：")
-		fmt.Scanln(&weight)
-
-		fmt.Println("身高（米）：")
-		fmt.Scanln(&height)
-
-		fmt.Println("年龄：")
-		fmt.Scanln(&age)
-
-		tizhi := Tizhi(BMI(weight, height), age, sex)
-		fmt.Println(name, "体脂是：", tizhi)
-		level, advice := giveAdvice(age, tizhi, sex)
-		ziliao[name] = fmt.Sprintf("体脂是：%f,级别是：%s，建议是：%s", tizhi, level, advice)
-		tizhiToal = append(tizhiToal, tizhi)
-		fmt.Println("是否继续下一轮计算：是：1，否:任意输入")
-		fmt.Scanln(&next)
-		if next != 1 {
-			break
-		}
-	}
-	for name, val := range ziliao {
-		fmt.Println(name, "资料为：", val)
-	}
-	var tizhiAll float64
-	for _, v := range tizhiToal {
-		tizhiAll += v
-	}
-	fmt.Println(len(tizhiToal), "个人的平均体脂为：", tizhiAll/float64(len(tizhiToal)))
-}
+package tizhi
 
 /**
 BMI=体重(公斤)÷(身高×身高)(米)
@@ -67,7 +21,11 @@ func Tizhi(bmi, age, sex float64) float64 {
 	return 0
 }
 
-func giveAdvice(age, tizhi, sex float64) (string, string) {
+func Aa() {
+
+}
+
+func GiveAdvice(age, tizhi, sex float64) (string, string) {
 	if sex == 1 {
 		if age >= 18 && age <= 39 {
 			if tizhi <= 10 {

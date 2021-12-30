@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	githubbmi "github.com/armstrongli/go-bmi"
+)
 
 func main() {
 	var name string
@@ -24,11 +27,11 @@ func main() {
 
 		fmt.Println("年龄：")
 		fmt.Scanln(&age)
-
-		tizhi := Tizhi(BMI(weight, height), age, sex)
+		bmi := githubbmi.BMI(weight, height)
+		tizhi := githubbmi.Tizhi(bmi, age, sex)
 		fmt.Println(name, "体脂是：", tizhi)
 		level, advice := giveAdvice(age, tizhi, sex)
-		ziliao[name] = fmt.Sprintf("体脂是：%f,级别是：%s，建议是：%s", tizhi, level, advice)
+		ziliao[name] = fmt.Sprintf("bmi是：%f,体脂是：%f,级别是：%s，建议是：%s", BMI(weight, height), tizhi, level, advice)
 		tizhiToal = append(tizhiToal, tizhi)
 		fmt.Println("是否继续下一轮计算：是：1，否:任意输入")
 		fmt.Scanln(&next)
