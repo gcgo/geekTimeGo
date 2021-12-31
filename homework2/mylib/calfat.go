@@ -1,11 +1,18 @@
 package gobmi
 
+import "fmt"
+
 /**
 BMI=体重(公斤)÷(身高×身高)(米)
 
 */
-func BMI(weight, height float64) float64 {
-	return weight / height / height
+func BMI(weight, height float64) (bmi float64, err error) {
+	if weight <= 0 || height <= 0 {
+		err = fmt.Errorf("身高体重非法")
+		return
+	}
+	bmi = weight / height / height
+	return
 }
 
 /**
@@ -21,82 +28,85 @@ func Tizhi(bmi, age, sex float64) float64 {
 	return 0
 }
 
-func giveAdvice(age, tizhi, sex float64) (string, string) {
+func GiveAdvice(age, tizhi, sex float64) (string, string, error) {
+	if age <= 0 || age > 150 || (sex != 1 && sex != 0) {
+		return "", "", fmt.Errorf("weight cannot be negative")
+	}
 	if sex == 1 {
 		if age >= 18 && age <= 39 {
 			if tizhi <= 10 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 10 && tizhi <= 16 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 16 && tizhi <= 21 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 21 && tizhi <= 26 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		} else if age >= 40 && age <= 59 {
 			if tizhi <= 11 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 11 && tizhi <= 17 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 17 && tizhi <= 22 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 22 && tizhi <= 27 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		} else {
 			if tizhi <= 13 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 13 && tizhi <= 19 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 19 && tizhi <= 24 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 24 && tizhi <= 29 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		}
 		//如果是女性
 	} else {
 		if age >= 18 && age <= 39 {
 			if tizhi <= 20 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 20 && tizhi <= 27 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 27 && tizhi <= 34 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 34 && tizhi <= 39 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		} else if age >= 40 && age <= 59 {
 			if tizhi <= 21 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 21 && tizhi <= 28 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 28 && tizhi <= 35 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 35 && tizhi <= 40 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		} else {
 			if tizhi <= 22 {
-				return "偏瘦", "多吃"
+				return "偏瘦", "多吃", nil
 			} else if tizhi > 22 && tizhi <= 29 {
-				return "标准", "保持"
+				return "标准", "保持", nil
 			} else if tizhi > 29 && tizhi <= 36 {
-				return "偏重", "运动"
+				return "偏重", "运动", nil
 			} else if tizhi > 36 && tizhi <= 41 {
-				return "肥胖", "减肥"
+				return "肥胖", "减肥", nil
 			} else {
-				return "严重肥胖", "没救了"
+				return "严重肥胖", "没救了", nil
 			}
 		}
 	}
