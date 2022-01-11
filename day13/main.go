@@ -3,8 +3,8 @@ package main
 func main() {
 	ss := Assets{
 		assets: []Asset{
-			&DoorGlass{},
-			&WoodGlass{},
+			DoorGlass{},
+			WoodGlass{},
 		},
 	}
 	ss.DoStartWork()
